@@ -142,6 +142,21 @@
   .preview-scale {
     transform-origin: top left;
   }
+
+  /* Phones: stack the worksheet and preview full-width so nothing
+     overflows the screen; the preview scales itself to fit. */
+  @media screen and (max-width: 640px) {
+    .layout { padding: 12px; gap: 16px; }
+    .panel, .preview-wrap { min-width: 0; flex: 1 1 100%; }
+    .panel { padding: 16px; }
+    /* the tag keeps its real 4.6in layout box even when visually scaled
+       down — clip it so it can't force the page wider than the phone */
+    .preview-wrap { position: static; overflow: hidden; max-width: 100%; }
+    .row2 { flex-direction: column; gap: 0; }
+    header.app-header { padding: 12px 14px; gap: 10px; }
+    header.app-header img { height: 32px; }
+    header.app-header h1 { font-size: 17px; }
+  }
   .tag {
     width: 4.6in;
     height: 7.4in;
